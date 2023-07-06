@@ -15,7 +15,7 @@ class AppBar extends HTMLElement {
 
             <div class="drawer-menu">
                 <button type="menu" id="nav-drawer" title="navigation button" aria-label="navigation drawer">
-                    <img src="${ICON._menu}" alt="navigation">
+                    <img class="icon-nav" src="${ICON._menu}" alt="navigation">
                 </button>
             </div>
 

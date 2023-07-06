@@ -30,8 +30,9 @@ const Detail = {
 
         // TODO: spinner dan offline state
         const spinner = document.getElementById('spinner');
+        const offlineState = document.getElementById('offline');
 
-        if (restaurants) {
+        if (restaurants.restaurant) {
             spinner.removeAttribute('hidden');
             setTimeout(() => {
                 spinner.setAttribute('hidden', '');
@@ -79,6 +80,8 @@ const Detail = {
                     }
                 });
             }, 1000);
+        } else {
+            offlineState.removeAttribute('hidden', '');
         }
     },
 };

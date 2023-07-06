@@ -13,8 +13,6 @@ class RestaurantSource {
             const responseJson = response.json();
             return responseJson;
         } catch (error) {
-            const offlineState = document.getElementById('offline');
-            setTimeout(() => offlineState.removeAttribute('hidden', ''), 1100);
             return error;
         }
     }

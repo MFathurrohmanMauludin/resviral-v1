@@ -58,6 +58,7 @@ content-footer {
 
 .download-apps {
     display: flex;
+    justify-content: center;
     @include mix.f-wrap($fw: wrap);
 
     & > a {

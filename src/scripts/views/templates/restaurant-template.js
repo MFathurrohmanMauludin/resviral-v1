@@ -105,19 +105,11 @@ const createDetailRestaurantTemplate = (data) => `
     <span class="txt-center padding-lr-10">Your review will help others to find the best choice</span>
     <form class="flx-column-start gap-10" id="myForm">
         <input type="text" class="field-content rounded-all" id="input-name" aria-label="enter your fullname"
-            placeholder="full name">
+            placeholder="full name" required>
         <textarea class="comment-pallete" id="input-review" cols="30" rows="4"
-            placeholder="please enter your comment"></textarea>
+            placeholder="please enter your comment" required></textarea>
         <button class="btn-submit rounded-all">Submit</button>
     </form>
-    <div class="flx-center">
-        <div class="loading" id="loaders" hidden>
-            <div class="loading-dot"></div>
-            <div class="loading-dot"></div>
-            <div class="loading-dot"></div>
-            <div class="loading-dot"></div>
-        </div>
-    </div>
     <div class="detail-list" id="reviews-user">
      ${data.customerReviews.map((reviews) => `
         <div class="card">

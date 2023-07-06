@@ -4,8 +4,6 @@
 
 .restaurant-image {
     border-radius: 20px;
-    min-width: 400px;
-    min-height: 500px;
     @include mix.full-width-height;
     @include mix.image-cover($fit: cover, $pos: center);
 }

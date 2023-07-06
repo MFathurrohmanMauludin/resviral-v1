@@ -1,7 +1,7 @@
 /* eslint-disable no-undef */
 const assert = require('assert');
 
-Feature('UnFavoriting Restaurants');
+Feature('Unfavoriting Restaurants');
 
 Before(({ I }) => {
     I.amOnPage('/#/my-favorite');
@@ -12,7 +12,7 @@ Scenario('showing empty list favorite', ({ I }) => {
     I.see('Let\'s To Find Your Restaurant favorite', '.favorite-not-found');
 });
 
-Scenario('cancel a restaurant', async ({ I }) => {
+Scenario('cancel adding a restaurant to the favorites list', async ({ I }) => {
     I.amOnPage('/');
     I.waitForElement('.restaurant-data a', 5);
     I.seeElement('.restaurant-data a');

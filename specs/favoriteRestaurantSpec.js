@@ -12,14 +12,14 @@ describe('Favoriting A Restaurant', () => {
         addFavoriteButtonContainer();
     });
 
-    fit('should show the favorite button when the movie has not been favorited before', async () => {
+    fit('should show the favorite button when the restaurant has not been favorited before', async () => {
         await TestFactories.createFavoriteButtonPresenterWithRestaurant({ id: 1 });
 
         expect(document.querySelector('[aria-label="favorite this restaurant"]'))
             .toBeTruthy();
     });
 
-    fit('should not show the unfavorited button when the movie has not been favorited before', async () => {
+    fit('should not show the unfavorited button when the restaurant has not been favorited before', async () => {
         await TestFactories.createFavoriteButtonPresenterWithRestaurant({ id: 1 });
 
         expect(document.querySelector('[aria-label="unfavorite this restaurant"]'))
@@ -36,7 +36,6 @@ describe('Favoriting A Restaurant', () => {
         FavoriteRestaurantIdb.deleteRestaurant(1);
     });
 
-    // TODO: Negative Scenario
     fit('should not add a restaurant again when its already favorited', async () => {
         await TestFactories.createFavoriteButtonPresenterWithRestaurant({ id: 1 });
 
@@ -46,7 +45,7 @@ describe('Favoriting A Restaurant', () => {
         // Simulasikan pengguna menekan tombol favorite
         document.querySelector('#favoriteButton').dispatchEvent(new Event('click'));
 
-        // tidak ada film yang ganda
+        // tidak ada restaurant yang ganda
         expect(await FavoriteRestaurantIdb.getAllRestaurants()).toEqual([{ id: 1 }]);
 
         FavoriteRestaurantIdb.deleteRestaurant(1);

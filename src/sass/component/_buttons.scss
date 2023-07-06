@@ -1,0 +1,87 @@
+@use "../abstract/mixins" as mix;
+@use "../abstract/variables" as var;
+@use "sass:map";
+
+button {
+    @include mix.f-align($fal: center);
+    border: none;
+    background-color: unset;
+    cursor: pointer;
+    &:hover {
+        border: 1px solid rgba(8, 8, 8, 0.5);
+    }
+}
+
+.btn-cta {
+    color: #424242;
+    background-color: rgb(255, 255, 255);
+    padding: 24px 28px;
+    font-weight: 600;
+    border-radius: 10px;
+    letter-spacing: 5px;
+    border: none;
+    font-size: 14pt;
+
+    &:hover {
+        background-color: rgb(255, 255, 255);
+        color: var.$pink-light-color;
+        border: none;
+    }
+}
+
+.btn-favorite {
+    @include mix.f-justify-content($pos: end);
+    @include mix.position($pos: absolute);
+    @include mix.full-width-height;
+    background-color: var.$black-semidark-color;
+    right: 0;
+    top: 0;
+    height: 285px;
+    opacity: 0;
+    z-index: 0;
+
+    &:hover,
+    &:focus-within {
+        opacity: 1;
+    }
+
+    & > button {
+        height: max-content;
+        padding: 12px;
+        border: 0;
+        z-index: 1;
+        background-color: unset;
+    }
+}
+
+.btn-submit {
+    padding: 16px 28px;
+    background-color: #f2786f;
+    color: #fff;
+    text-transform: capitalize;
+    font-size: 14pt;
+}
+
+.btn-favorite img {
+    height: 36px;
+}
+
+// ukuran layar maximum 850px
+@media screen and (max-width: map.get(var.$breakpoints, "md")) {
+    .btn-favorite {
+        opacity: 1;
+        background-color: unset;
+    }
+    .btn-favorite > button {
+        background-color: rgb(0 0 0 / 50%);
+    }
+}
+
+// ukuran layar maximum 650px
+@media screen and (max-width: map.get(var.$breakpoints, "sm")) {
+    .btn-cta {
+        padding: 16px 14px;
+        font-size: 8pt;
+        letter-spacing: 4px;
+    }
+}

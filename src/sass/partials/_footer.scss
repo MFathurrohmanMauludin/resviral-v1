@@ -1,0 +1,119 @@
+@use "../abstract/mixins" as mix;
+@use "../abstract/variables" as var;
+@use "sass:map";
+
+.txt-slogan {
+    margin-top: 21px;
+    font-size: 12pt;
+}
+
+img.logo-footer {
+    width: 200px;
+    height: 36px;
+}
+
+footer {
+    padding-top: 50px;
+    background: radial-gradient(circle at 10% 20%, rgb(255 255 255) 0%, rgb(249, 219, 217) 90%);
+}
+
+content-footer {
+    @include mix.f-direction($fd: row);
+    @include mix.f-wrap($fw: wrap);
+    justify-content: space-between;
+    padding: 14px 14px 0 14px;
+    width: 100%;
+
+    & ul > li[class="tf-uppercase"] {
+        margin-left: 10px;
+        font-weight: 600;
+        letter-spacing: 5px;
+    }
+
+    & ul li {
+        margin-bottom: 16px;
+        & a {
+            color: var.$black-light-color;
+            padding: 12px 10px 12px 10px;
+            font-weight: 500;
+            &:hover {
+                color: rgb(255, 88, 152);
+            }
+        }
+    }
+}
+
+.social-media {
+    @include mix.f-direction($fd: row);
+    & a {
+        @include mix.f-align($fal: center);
+        padding: 12px 10px 12px 10px;
+    }
+
+    & img {
+        width: 28px;
+        height: 28px;
+    }
+}
+
+.download-apps {
+    display: flex;
+    @include mix.f-wrap($fw: wrap);
+
+    & > a {
+        padding: 0 !important;
+    }
+
+    & a > img {
+        height: 60px;
+        width: 150px;
+    }
+}
+
+.copyright-text {
+    background: radial-gradient(circle at 10% 20%, rgb(255, 228, 228) 0%, rgb(249, 219, 217) 90%);
+    color: var.$black-light-color;
+    text-align: center;
+    margin-top: 100px;
+    padding: 10px;
+}
+
+// ukuran layar maximum 1200px
+@media screen and (max-width: map.get(var.$breakpoints, "xl")) {
+    content-footer {
+        font-size: 14pt;
+    }
+}
+
+// ukuran layar maximum 850 px
+@media screen and (max-width: map.get(var.$breakpoints, "md")) {
+    content-footer {
+        @include mix.f-direction($fd: column);
+        width: 100%;
+
+        & > span {
+            font-size: 12pt;
+        }
+
+        & ul {
+            @include mix.f-direction($fd: column);
+            align-items: center;
+
+            & .tf-uppercase {
+                font-size: 14pt;
+            }
+
+            & li {
+                margin: 10px;
+
+                & a {
+                    font-size: 14pt;
+                }
+            }
+        }
+    }
+
+    .txt-slogan {
+        text-align: center;
+    }
+}

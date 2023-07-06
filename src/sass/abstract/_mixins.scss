@@ -1,0 +1,36 @@
+@mixin full-width-height {
+    width: 100%;
+    height: 100%;
+}
+
+@mixin position($pos: relative) {
+    position: $pos;
+}
+
+@mixin image-cover($fit: cover, $pos: center) {
+    object-fit: $fit;
+    object-position: $pos;
+}
+
+@mixin f-align($fal: center) {
+    display: flex;
+    align-items: $fal;
+}
+
+@mixin f-direction($fd: row) {
+    display: flex;
+    flex-direction: $fd;
+}
+
+@mixin f-wrap($fw: wrap) {
+    flex-wrap: $fw;
+}
+
+@mixin f-justify-content($pos: center) {
+    display: flex;
+    justify-content: $pos;
+}
+
+@mixin gt-column($rep: 3) {
+    grid-template-columns: repeat($rep, 1fr);
+}

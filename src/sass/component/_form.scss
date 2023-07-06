@@ -1,0 +1,88 @@
+@use "../abstract/mixins" as mix;
+@use "../abstract/variables" as var;
+
+.search-component {
+    @include mix.f-direction($fd: row);
+}
+
+#myForm {
+    padding: 10px;
+    width: 500px;
+    max-width: 100%;
+    margin-bottom: 5em;
+}
+
+.comment-pallete {
+    padding: 16px;
+    outline: none;
+    width: 100%;
+    height: 200px;
+    border-radius: 10px;
+    font-size: 12pt;
+
+    &::placeholder {
+        text-transform: capitalize;
+    }
+}
+
+textarea {
+    border: 1px solid rgb(246, 187, 187);
+    &:focus {
+        border: 1px solid rgb(255, 67, 108);
+    }
+}
+
+#form-search {
+    @include mix.position($pos: relative);
+    width: 100%;
+    max-width: 400px;
+    padding: 10px;
+}
+
+.field-content {
+    padding: 14px;
+    border: 1px solid var.$black-light-color;
+    font-size: 12pt;
+
+    &:focus {
+        border: 1px solid;
+    }
+}
+
+label {
+    position: absolute;
+    pointer-events: none;
+    left: 24px;
+    margin-top: 11px;
+    transform: translate(0, 0);
+    transition: transform, 0.3s ease;
+    font-size: 12pt;
+    color: rgb(114, 114, 114);
+}
+
+input.field-content {
+    width: 100%;
+    max-width: 500px;
+    border: 1px solid rgb(246, 187, 187);
+
+    &:focus {
+        outline: none;
+        border: 1px solid rgb(255, 67, 108);
+        font-size: 12pt;
+    }
+
+    &::placeholder {
+        font-size: 12pt;
+        text-transform: capitalize;
+    }
+}
+
+input:focus ~ label,
+input:not(:placeholder-shown) ~ label {
+    transform: translate(0, -20px);
+    left: 17px;
+    font-size: 10pt;
+    padding: 0 10px 0 10px;
+    color: rgb(242, 91, 91);
+    background-color: #fff;
+}

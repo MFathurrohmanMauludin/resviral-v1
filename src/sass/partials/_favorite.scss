@@ -1,0 +1,16 @@
+@use "../abstract/mixins" as mix;
+@use "../abstract/variables" as var;
+@use "sass:map";
+
+.favorite-not-found {
+    text-align: center;
+    font-size: 16pt;
+    padding: 3em 5em 5em 5em;
+}
+
+// ukuran layar maximum 650px
+@media screen and (max-width: map.get(var.$breakpoints, "sm")) {
+    .favorite-not-found {
+        font-size: 12pt;
+    }
+}

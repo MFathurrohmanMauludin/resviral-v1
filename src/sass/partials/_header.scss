@@ -1,0 +1,196 @@
+@use "../abstract/mixins" as mix;
+@use "../abstract/variables" as var;
+@use "sass:map";
+
+header {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    background-color: #fff;
+}
+
+app-bar {
+    @include mix.f-justify-content($pos: space-between);
+    align-items: center;
+    padding: 14px 10px 14px 10px;
+}
+
+.active {
+    border-bottom: 4px solid #ff55aa;
+    transition: all ease 0.2s;
+}
+
+.logo > a {
+    display: flex;
+    align-items: center;
+    padding: 5px;
+    & img {
+        @include mix.full-width-height;
+        max-width: 200px;
+    }
+}
+
+nav ul {
+    display: flex;
+    flex-direction: row;
+}
+
+nav li a {
+    text-transform: capitalize;
+    padding: 11px 16px 21px 16px;
+    color: rgb(66, 66, 66);
+    &:hover,
+    &:focus {
+        color: rgb(255, 33, 181);
+    }
+}
+
+/* skip navigation */
+.skip-to-content {
+    position: absolute;
+    top: -100px;
+    left: 20%;
+    padding: 10px 16px 10px 16px;
+    background-color: rgb(242, 91, 91);
+    color: white;
+    border: 1px solid #fff;
+    z-index: 2;
+    border-radius: 20px;
+    transition: top, ease 0.5s;
+
+    &:focus {
+        top: 15px;
+        outline: 2px solid rgb(242, 164, 164);
+    }
+}
+
+// offline atau online
+#check {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    z-index: 1;
+}
+
+.online {
+    padding: 8px;
+    text-align: center;
+    color: #fff;
+    background: linear-gradient(to top, #0ba360 0%, #3cba92 100%);
+    animation: animateOnline 2.5s;
+    animation-delay: 1s;
+    animation-fill-mode: both;
+    animation-timing-function: ease;
+}
+
+.offline {
+    padding: 8px;
+    text-align: center;
+    color: #fff;
+    transform: translateY(-50px);
+    background: linear-gradient(102.2deg, rgb(250, 45, 66) 9.6%, rgb(245, 104, 104) 96.1%);
+    animation: animateOffline 2.5s;
+    animation-delay: 1s;
+    animation-fill-mode: both;
+    animation-timing-function: ease;
+}
+
+@keyframes animateOnline {
+    0% {
+        transform: translateY(0);
+    }
+
+    100% {
+        transform: translateY(50px);
+    }
+}
+
+@keyframes animateOffline {
+    0% {
+        transform: translateY(50px);
+    }
+
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+// ukuran layar minimum 1200px
+@media screen and (min-width: map.get(var.$breakpoints, "xl")) {
+    .drawer-menu {
+        display: none;
+    }
+}
+
+// ukuran layar maximum 1200px
+@media screen and (max-width: map.get(var.$breakpoints, "xl")) {
+    .drawer-menu {
+        display: none;
+    }
+}
+
+// ukuran layar maximum 850px
+@media screen and (max-width: map.get(var.$breakpoints, "md")) {
+    header {
+        position: sticky;
+        top: 0;
+        z-index: 1;
+        font-size: 10;
+    }
+
+    .active {
+        border-bottom: 1px solid #ff55aa;
+    }
+
+    nav ul {
+        @include mix.f-direction($fd: column);
+        @include mix.position($pos: absolute);
+        top: 100%;
+        right: 0;
+        padding: 10px;
+        background-color: #fff;
+        border-radius: 0 0 0 10px;
+        li a {
+            padding: 12px 150px 12px 0;
+        }
+    }
+
+    ul li {
+        margin: 10px 5px 10px 10px;
+    }
+
+    #menu {
+        @include mix.position($pos: absolute);
+        visibility: hidden;
+        scale: 0;
+        top: 100%;
+        right: 0;
+        padding: 0;
+        transform: translate(0, 50px);
+        transition: scale, transform, 0.4s ease-in;
+    }
+
+    #menu.open {
+        @include mix.position($pos: absolute);
+        visibility: visible;
+        scale: 1.1;
+        top: 100%;
+        right: 0;
+        padding: 0;
+        transform: translate(0, 0);
+    }
+
+    .drawer-menu {
+        display: unset;
+        & > button {
+            @include mix.f-align($fal: center);
+            padding: 12px;
+            background-color: rgba(255, 255, 255, 0);
+            border: 1px solid #fff;
+            border-radius: 5px;
+            &:hover {
+                border: 1px solid rgba(8, 8, 8, 0.5);
+            }
+        }
+    }
+}

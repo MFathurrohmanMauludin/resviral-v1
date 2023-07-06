@@ -1,0 +1,88 @@
+@use "../abstract/mixins" as mix;
+@use "../abstract/variables" as var;
+@use "sass:map";
+
+.hero {
+    @include mix.position($pos: relative);
+    @include mix.f-direction($fd: row);
+    justify-content: center;
+    background: radial-gradient(circle at 10% 20%, rgb(246, 187, 187) 0%, rgb(249, 219, 217) 90%);
+}
+
+.hero-text {
+    @include mix.position($pos: absolute);
+    @include mix.f-direction($fd: column);
+    top: 0;
+    height: 100%;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    & h1 {
+        max-width: 60vw;
+        padding: 0;
+        font-size: 3vw;
+    }
+
+    & p {
+        width: 60vw;
+        margin: 1em 0 1em 0;
+        font-size: 2vw;
+        letter-spacing: 3px;
+    }
+}
+
+.image-hero {
+    position: relative;
+}
+
+.image-hero picture > img {
+    filter: brightness(60%);
+}
+
+// ukuran layar minimum 1200px
+@media screen and (min-width: map.get(var.$breakpoints, "xl")) {
+    .image-hero picture > img {
+        min-width: 1000px;
+        width: 100%;
+        height: 660px;
+        @include mix.image-cover($fit: cover, $pos: center);
+    }
+}
+
+// ukuran layar maximum 1200px
+@media screen and (max-width: map.get(var.$breakpoints, "xl")) {
+    .image-hero picture > img {
+        @include mix.full-width-height;
+        @include mix.image-cover($fit: cover, $pos: center);
+    }
+
+    .hero-text {
+        & h1 {
+            font-size: 4vw;
+            max-width: 75%;
+            font-weight: 800;
+        }
+
+        & p {
+            font-size: 2.3vw;
+            max-width: 80%;
+            margin-top: 1em;
+        }
+    }
+}
+
+// ukuran layar maximum 850px
+@media screen and (max-width: map.get(var.$breakpoints, "md")) {
+    .hero-text {
+        & h1 {
+            font-size: 4vw !important;
+            max-width: 80% !important;
+        }
+
+        & p {
+            max-width: 90% !important;
+            font-size: 2.5vw;
+            color: rgb(255, 255, 255);
+        }
+    }
+}

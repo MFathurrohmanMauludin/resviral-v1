@@ -1,0 +1,161 @@
+@use "../abstract/variables" as var;
+@use "../abstract/mixins" as mix;
+@use "sass:map";
+
+.card {
+  @include mix.position($pos: relative);
+  width: 100%;
+  padding-bottom: 30px;
+  max-width: 400px;
+  border-bottom: 3px solid rgb(255, 255, 255);
+  transform: translate(0, 10px);
+  transition: transform, border-bottom, 0.3s;
+  &:hover {
+    cursor: default;
+    transform: translate(0, 0);
+    border-bottom: 3px solid rgb(242, 164, 164);
+  }
+
+  &-header {
+    @include mix.f-justify-content($pos: center);
+  }
+
+  &-header picture > img {
+    @include mix.image-cover($fit: cover, $pos: center);
+    min-height: 300px;
+    height: 100%;
+    width: 100%;
+  }
+}
+
+.title-card {
+  font-size: 1.5em;
+  background-color: #fff;
+  padding: 10px 0 10px 0;
+  width: 100%;
+  max-width: 400px;
+  color: rgb(242, 91, 91);
+  & > a {
+    padding: 12px 10px 12px 0;
+    color: rgb(242, 91, 91);
+    &:hover {
+      color: rgb(225, 56, 56);
+    }
+  }
+}
+
+.sub-title-card {
+  @include mix.f-direction($fd: row);
+  @include mix.full-width-height;
+  padding: 5px 0 5px 0;
+  max-height: 250px;
+}
+
+.desc-card {
+  overflow: hidden;
+  display: -webkit-box;
+  padding: 5px 0 5px 0;
+  line-clamp: 4;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+}
+
+.location,
+.rating,
+.clock {
+  display: flex;
+  align-items: center;
+  margin-right: 8px;
+}
+
+span {
+  .location &,
+  .rating &,
+  .clock & {
+    color: #727272;
+    background-color: #fff;
+    font-size: small;
+  }
+
+  &.open-state {
+    margin-top: -28px;
+    font-size: 10pt;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+}
+
+.text-open {
+  color: rgb(0, 139, 0) !important;
+}
+
+.text-closed {
+  color: rgb(255, 6, 68) !important;
+}
+
+img {
+  .location > &,
+  .rating > &,
+  .clock > & {
+    height: 16px;
+    width: 16px;
+    margin-right: 6px;
+  }
+}
+
+.rating-state {
+  @include mix.position($pos: absolute);
+  @include mix.f-direction($fd: row);
+  align-items: center;
+  font-size: 10pt;
+  letter-spacing: 5px;
+  left: 0;
+  top: 0;
+  width: fit-content;
+  height: fit-content;
+  border-radius: 0 0 10px 0;
+  padding: 12px;
+  color: #f8f8f8;
+  background-color: rgb(255, 139, 139);
+  z-index: 1;
+}
+
+.rating-state-detail {
+  @include mix.position($pos: absolute);
+  @include mix.f-direction($fd: row);
+  align-items: center;
+  font-size: 10pt;
+  letter-spacing: 5px;
+  width: fit-content;
+  height: fit-content;
+  border-radius: 0 0 10px 0;
+  padding: 12px;
+  color: #f8f8f8;
+  background-color: rgb(255, 139, 139);
+  z-index: 0;
+}
+
+.btn-favorite > img {
+  height: 30px;
+}
+
+// ukuran layar maximum 850px
+@media screen and (max-width: map.get(var.$breakpoints, "md")) {
+  .card {
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    transition: none !important;
+  }
+
+  .body-card {
+    margin: 6px;
+  }
+
+  .sub-title-card {
+    @include mix.f-direction($fd: row);
+    @include mix.f-wrap($fw: wrap);
+    row-gap: 5px;
+  }
+}

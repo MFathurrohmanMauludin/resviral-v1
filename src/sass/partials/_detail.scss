@@ -1,0 +1,134 @@
+@use "../abstract/mixins" as mix;
+@use "../abstract/variables" as var;
+@use "sass:map";
+
+.restaurant-image {
+    border-radius: 20px;
+    min-width: 400px;
+    min-height: 500px;
+    @include mix.full-width-height;
+    @include mix.image-cover($fit: cover, $pos: center);
+}
+
+#favoriteButton {
+    padding: 10px;
+    border: 1px solid #ffffff00;
+}
+
+.icon-heart {
+    width: 30px;
+    height: 30px;
+}
+
+.detail-list {
+    display: grid;
+    margin-bottom: 5em;
+    gap: 20px 20px;
+    padding: 20px;
+}
+
+.detail-hero {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+    margin-bottom: 5em;
+}
+
+.detail-heading {
+    margin-bottom: 1.3em;
+    letter-spacing: 3px;
+}
+
+.user-image {
+    border-radius: 100px;
+    width: 100px !important;
+    height: 100px !important;
+    @include mix.image-cover($fit: contain, $pos: center);
+    border: 1px solid #8d8d8d;
+}
+
+.txt-date {
+    font-size: 10pt;
+    color: #757575;
+}
+
+// ukuran layar minimum 1200px
+@media screen and (min-width: map.get(var.$breakpoints, "xl")) {
+    .detail-list {
+        @include mix.gt-column($rep: 3);
+    }
+}
+
+// ukuran layar maximum 1200px
+@media screen and (max-width: map.get(var.$breakpoints, "xl")) {
+    .detail-list {
+        @include mix.gt-column($rep: 3);
+    }
+}
+
+// ukuran layar maximum 850px
+@media screen and (max-width: map.get(var.$breakpoints, "md")) {
+    .detail-hero {
+        @include mix.gt-column($rep: 1);
+
+        & > .restaurant-image {
+            margin-bottom: 1em;
+        }
+    }
+
+    .detail-list {
+        @include mix.gt-column($rep: 2);
+        padding: 10px;
+
+        & .card {
+            border: 1px solid #e6e6e69c;
+            border-radius: 10px;
+            padding: 10px 10px 0 10px !important;
+        }
+    }
+
+    .food-image,
+    .drink-image {
+        @include mix.image-cover($fit: cover, $pos: center);
+        height: 200px !important;
+        width: 100% !important;
+    }
+}
+
+@media screen and (max-width: map.get(var.$breakpoints, "sm")) {
+    .detail-hero > .restaurant-image {
+        margin-bottom: 1em;
+    }
+
+    .detail-list {
+        gap: 10px 10px !important;
+    }
+
+    .body-card {
+        & > .title-card {
+            font-size: 12pt;
+        }
+
+        & > .desc-card {
+            font-size: 10pt;
+            color: #424242;
+        }
+    }
+
+    .food-image,
+    .drink-image {
+        @include mix.image-cover($fit: cover, $pos: center);
+        height: 100% !important;
+        width: 100% !important;
+        min-height: 100px !important;
+        max-width: 300px !important;
+    }
+
+    .detail-heading {
+        font-size: 16pt;
+    }
+
+    .mt-3-em {
+        margin-top: 1em;
+    }
+}

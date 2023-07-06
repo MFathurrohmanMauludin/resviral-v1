@@ -1,0 +1,20 @@
+// layer size
+$breakpoints: (
+  "sm": 650px,
+  "md": 850px,
+  "xl": 1200px,
+);
+
+// color
+$pink-light-color: rgb(242, 164, 164);
+$pink-semidark-color: rgb(255, 139, 139);
+$pink-dark-color: rgb(242, 91, 91);
+$green-dark-color: rgb(0, 139, 0);
+$black-semidark-color: rgba(0, 0, 0, 0.4);
+$black-light-color: rgb(66, 66, 66);
+
+// text
+$primary-font: "Poppins", sans-serif;
+$text-capital: capitalize;
+$text-uppercase: uppercase;
+$text-lowercase: lowercase;

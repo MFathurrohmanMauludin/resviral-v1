@@ -1,0 +1,68 @@
+@use "../abstract/mixins" as mix;
+@use "../abstract/variables" as var;
+@use "sass:map";
+
+restaurant-list {
+    display: grid;
+    gap: 1.5rem 2rem;
+    margin: 30px 0;
+    padding: 0 30px;
+}
+
+#restaurant-data-show {
+    display: none;
+}
+
+.facility-list {
+    @include mix.f-direction($fd: row);
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    margin: 10px 0 10px 0;
+    gap: 10px;
+    & > span {
+        padding: 5px 10px 5px 10px;
+        font-size: 10pt;
+        background-color: var.$black-light-color;
+        border-radius: 5px;
+        color: #fff;
+        scale: 1;
+        transition: scale, ease 0.5s;
+
+        &:hover {
+            scale: 1.2;
+        }
+    }
+}
+
+// ukuran layar minimum 1200px
+@media screen and (min-width: map.get(var.$breakpoints, "xl")) {
+    restaurant-list {
+        @include mix.gt-column($rep: 3);
+    }
+}
+
+// ukuran layar maximum 1200px
+@media screen and (max-width: map.get(var.$breakpoints, "xl")) {
+    restaurant-list {
+        @include mix.gt-column($rep: 2);
+    }
+}
+
+// ukuran layar maximum 850px
+@media screen and (max-width: map.get(var.$breakpoints, "md")) {
+    restaurant-list {
+        @include mix.gt-column($rep: 2);
+    }
+}
+
+// ukuran layar maximum 650px
+@media screen and (max-width: map.get(var.$breakpoints, "sm")) {
+    restaurant-list {
+        @include mix.gt-column($rep: 1);
+        padding: 0 !important;
+    }
+
+    .search-info-not-found {
+        font-size: 0.7em;
+    }
+}

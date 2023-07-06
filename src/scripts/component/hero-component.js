@@ -7,7 +7,7 @@ class HeroComponent extends HTMLElement {
         this.innerHTML = `
         <div class="image-hero">
             <picture>
-                <source media="(max-width: 480px)" srcset="./img/hero/hero-image-small.jpg">
+                <source media="(max-width: 400px)" srcset="./img/hero/hero-image-small.jpg">
                 <img class="lazyload" data-src="./img/hero/hero-image.jpg" alt="hero-image">
             </picture>
             <div class="hero-text txt-center">

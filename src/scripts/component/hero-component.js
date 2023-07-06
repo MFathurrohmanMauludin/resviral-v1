@@ -8,7 +8,7 @@ class HeroComponent extends HTMLElement {
         <div class="image-hero">
             <picture>
                 <source media="(max-width: 400px)" srcset="./img/hero/hero-image-small.jpg">
-                <img class="lazyload" data-src="./img/hero/hero-image.jpg" alt="hero-image">
+                <img src="./img/hero/hero-image.jpg" alt="hero-image">
             </picture>
             <div class="hero-text txt-center">
                 <h1 class="txt-white lh-1 ls-10 tf-uppercase" tabindex="0">Don't bother looking for a restaurant, with

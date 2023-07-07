@@ -5,7 +5,7 @@ class partnersItem extends HTMLElement {
 
     render() {
         const getSelector = document.querySelector('content-partners');
-        fetch('./data/data-restaurant.json')
+        fetch('./data/data-partners-restaurant.json')
             .then((res) => res.json())
             .then((data) => {
                 data.partners.forEach((read) => {

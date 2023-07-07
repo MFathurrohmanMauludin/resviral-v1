@@ -1,9 +1,11 @@
 import { precacheAndRoute } from 'workbox-precaching';
 import { registerRoute } from 'workbox-routing';
+import { skipWaiting } from 'workbox-core';
 import { ExpirationPlugin } from 'workbox-expiration';
 import { CacheFirst, StaleWhileRevalidate } from 'workbox-strategies';
 import { CacheableResponsePlugin } from 'workbox-cacheable-response';
 
+skipWaiting();
 // Do precaching
 precacheAndRoute(self.__WB_MANIFEST);
 

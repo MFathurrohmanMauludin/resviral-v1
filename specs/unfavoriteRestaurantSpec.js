@@ -23,21 +23,21 @@ describe('Unfavoriting A Restaurant', () => {
             .toBeTruthy();
     });
 
-    fit('should not display favorite widget when the movie has been favorited', async () => {
+    fit('should not display favorite widget when the restaurant has been favorited', async () => {
         await TestFactories.createFavoriteButtonPresenterWithRestaurant({ id: 1 });
 
         expect(document.querySelector('[aria-label="favorite this restaurant"]'))
             .toBeFalsy();
     });
 
-    fit('should be able to remove favorited movie from the list', async () => {
+    fit('should be able to remove favorited restaurant from the list', async () => {
         await TestFactories.createFavoriteButtonPresenterWithRestaurant({ id: 1 });
         document.querySelector('[aria-label="unfavorite this restaurant"]').dispatchEvent(new Event('click'));
 
         expect(await FavoriteRestaurantIdb.getAllRestaurants()).toEqual([]);
     });
 
-    fit('should not throw error if the unfavorited movie is not in the list', async () => {
+    fit('should not throw error if the unfavorited restaurant is not in the list', async () => {
         await TestFactories.createFavoriteButtonPresenterWithRestaurant({ id: 1 });
 
         // hapus dulu restaurant dari daftar restaurant yang disukai

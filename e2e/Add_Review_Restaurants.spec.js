@@ -9,7 +9,7 @@ Scenario('add review for one restaurant', async ({ I }) => {
     I.scrollTo('.title');
     I.waitForClickable('.restaurant-data a', 5);
     I.click(locate('.restaurant-data a').first());
-    I.waitForElement('.detail-hero', 5);
+    I.waitForElement('.detail-hero', 3);
 
     I.scrollTo('#myForm', -350, -350);
 
